@@ -45,7 +45,11 @@
                     <div class="files-list-item">
                         <span style="font-size: 20px;">📄</span>
                         <div class="image-section">
-                            <img src="{{ item.file.url }}" alt="jjjj">
+                            {% if item.is_image %}
+                                <img src="{{ item.file.url }}" alt="{{ item.file.name }}">
+                            {% else %}
+                                <span style="font-size: 20px;">📄 document</span>
+                            {% endif %}
                             <span>{{ item.file.name }}</span>
                             <div>{{ item.uploaded_at|date:"Y/m/d - H:i" }}</div>
                         </div>
