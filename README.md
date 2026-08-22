@@ -2,7 +2,7 @@
 
 A small Django project for learning **Django Templates (DTL), file uploads, media/static files, SQLite, URL routing, models, views, and basic CRUD operations**.
 
-![Project Screenshot](docs/project-screenshot.png)
+![Project Screenshot](media/uploads/output.JPG)
 
 ## Features
 

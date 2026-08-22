@@ -11,10 +11,5 @@ __pycache__/
 .venv/
 venv/
 
-# Node
-node_modules/
-.next/
-out/
-
 # IDE
 .vscode/
