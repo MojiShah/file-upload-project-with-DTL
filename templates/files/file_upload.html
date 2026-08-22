@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>File Page</title>
-    <link rel="stylesheet" href="{% static file-upload.css  %}">
+    <link rel="stylesheet" href="{% static 'file-upload.css' %}">
 </head>
 
 <body dir="rtl">
@@ -38,9 +38,9 @@
                 <span> {{ files|length }} فایل </span>
             </div>
 
-            <div class="delete-section-body">
+            <ul class="delete-section-body">
                 {% for item in files %}
-                <article class="files-list">
+                <li class="files-list">
 
                     <div class="files-list-item">
                         <span style="font-size: 20px;">📄</span>
@@ -59,7 +59,7 @@
                         </form>
                     </div>
 
-                </article>
+                </li>
 
                 {% empty %}
 
@@ -70,7 +70,7 @@
                 </div>
 
                 {% endfor %}
-            </div>
+            </ul>
         </section>
     </main>
 </body>
