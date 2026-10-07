@@ -21,10 +21,10 @@
             <a href="{% url 'file_update' file.id %}">جایگزین کردن فایل</a>
         </div>
 
-        <form  method="POSt" action="{% url 'file_list %}">بازگشت به فایل ها</form>
+        <form  method="POSt" action="{% url 'file_list' %}">بازگشت به فایل ها</form>
 
     </div>
 
 </section>
 
-{%end block}
+{% endblock %}

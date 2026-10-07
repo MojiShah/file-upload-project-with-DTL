@@ -9,6 +9,6 @@ urlpatterns=[
     path('<int:file_id>/',views.file_detail,name='file_detail'),
     path('<int:file_id>/download',views.file_download,name='file_download'),
     path('<int:file_id>/edit',views.file_update,name='file_update'),
-    path('<int:file_id>/download',views.file_delete,name='file_delete'),
-    ];
+    path('<int:file_id>/delete',views.file_delete,name='file_delete'),
+    ]
 

@@ -43,7 +43,7 @@
                             <a href="{% url 'file_detail' item.id %}">مشاهده</a>    
                             <a href="{% url 'file_download' item.id %}">دانلود</a>
 
-                            <form method="POST" action="{% url file_delete %} item.id">
+                            <form method="POST" action="{% url 'file_delete' item.id %}">
                                 {% csrf_token %}
                                 <button type="submit">حذف</button>
                             </form>
