@@ -34,3 +34,7 @@ def file_create(request):
             File.objects.create(file=uploaded_file)
         return redirect('file_list')
     return redirect('file_list')
+
+def file_detail(request,file_id):
+    file = get_object_or_404(File,id=file_id)
+    return render(request,'files/file_detail.html',{'file':file})

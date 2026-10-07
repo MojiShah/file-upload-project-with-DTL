@@ -1,12 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width, initial-scale=1.0">
-    <title>Home Page</title>
-</head>
-<body>
-    <h1 style="text-align: center;">Welcome to home Page</h1>
-    <a href="{% url 'file_upload' %}">رفتن به صفحه آپلود فایل ها</a>
-</body>
-</html>
+{% extends "base.html" %}
+{% block title %}خانه{%  endblock %}
+{% block content %}
+    <section class="page-section">
+        <h1>مدیریت فایل</h1>
+        <hr>
+        <p>به سیستم مدیریت فایل خوش آمدید</p>
+        <a href="{%  url 'file_list' %}">مشاهده فایل‌ها</a>
+    </section>
+{%  endblock %}
