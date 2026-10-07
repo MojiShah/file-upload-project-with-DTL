@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}ویرایش فایل{% endblock %}
+{% block content %}
+<section class="page-section">
+    <h1> جایگزین کردن فایل</h1>
+
+    <p> فایل فعلی:<strong>{{ file.file.name }}</strong></p>
+
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="file-input"> فایل جدید</label>
+
+        <input id="file-input" type="file" name="file" required>
+
+        <button type="submit"> ذخیره تغییرات</button>
+    </form>
+
+     <br>
+
+
+    <a href="{% url 'file_detail' file.id %}"> انصراف</a>
+</section>
+{% endblock %}
