@@ -57,3 +57,10 @@ def file_update(request,file_id):
         return redirect(file_detail,file_id=file.id)
     return render(request,'files/file-update.html',{"file":file})
 
+def file_delete(request,file_id):
+    file = get_object_or_404(File,id=file_id)
+    if request.method == "POST":
+        file.file.delete(save=False)
+        file.delete()
+    return redirect("file_list")
+
