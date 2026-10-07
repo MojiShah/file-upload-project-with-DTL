@@ -1,5 +1,30 @@
 {%  extends "base.html" %}
 {%  block title %}جزییات فایل{%  endblock %}
 {% block content %}
+<section class="page-section">
+    <h1>جزییات فایل</h1>
+    <div class="file-edit">
+
+        <h2>{{ file.file.name }}</h2>
+
+        {% if file.is_image %}
+            <img src="{{file.file.url}}" alt="{{file.file.name}}" class="file-preview">
+        {% else %}
+            <p> 📄 این فایل تصویر نیست.</p>
+        {% endif %}
+
+        <p><strong>نام فایل: </strong>{{file.file.name}}</p>
+        <p><strong>تاریخ آپلود: </strong>{{file.uploaded_at|date:"Y/m/d - H:i"}}</p>
+
+        <div class="file-action">
+            <a href="{% url 'file_download' file.id %}">دانلود</a>
+            <a href="{% url 'file_update' file.id %}">جایگزین کردن فایل</a>
+        </div>
+
+        <form  method="POSt" action="{% url 'file_list %}">بازگشت به فایل ها</form>
+
+    </div>
+
+</section>
 
 {%end block}

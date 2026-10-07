@@ -1,1 +1,67 @@
 {% extends "base.html" %}
+{% block title %}فایل‌ها{% endblock %}
+{% block content %}
+<section class="page-section">
+
+    <header class="page-header">
+        <div>
+            <h1>فایل‌های من</h1>
+            <p>{{ files|length }} فایل</p>
+        </div>
+    </header>
+
+    <section class="upload-section">
+        <h2>آپلود فایل جدید</h2>
+        <form method="POSt" action="{% url 'file_create' %} " enctype="multipart/form-data">
+            {% csrf_token %}
+            <label for="file-input">انتخاب فایل</label>
+            <input type="file" name="file" id="file-input" required>
+            <button type="submit" class="upload-button">آپلود</button>
+        </form>
+    </section>
+
+    <section class="file-section">
+        <ul class="file-list">
+            
+            {% for item in files %}
+                <li class="file-item">
+
+                    <div class="file-info">
+
+                        {% if item.is_image %}
+                            <img src="{{ item.file.url }}" alt="{{ item.file.name }}" class="file-thumbnail">
+                        {% else %}
+                            <span class="file-icon"> 📄</span>
+                        {% endif %}
+
+                        <div>
+                            <div>{{ item.file.name }}</div>
+                            <small>{{ item.uploaded_at|date:"Y/m/d - H:i" }}</small>
+                        </div>
+
+                        <div class="file-action">
+                            <a href="{% url 'file_detail' item.id %}">مشاهده</a>    
+                            <a href="{% url 'file_download' item.id %}">دانلود</a>
+
+                            <form method="POST" action="{% url file_delete %} item.id">
+                                {% csrf_token %}
+                                <button type="submit">حذف</button>
+                            </form>
+
+                        </div>
+                    </div>
+
+                </li>
+
+                 {% empty %}
+
+                <li>
+                    هنوز فایلی آپلود نکرده‌اید.
+                </li>
+            {% endfor %}
+
+        </ul>
+    </section>
+
+</section>
+{% endblock %}
