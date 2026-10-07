@@ -56,88 +56,80 @@ main {
 }
 
 .upload-section {
-            margin: 10px auto;
-            width: 90%;
-            border: 1px solid black;
-            border-radius: 15px;
-            padding: 10px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+    background: white;
+    padding: 24px;
+    margin: 30px 0;
+    border-radius: 8px;
+}
 
-        .delete-section{
-            margin: 10px auto;
-            width: 90%;
-            border: 1px solid black;
-            border-radius: 15px;
-            padding: 10px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 20px;
-        }
+.files-section {
+    background: white;
+    padding: 24px;
+    border-radius: 8px;
+}
 
-        .delete-section-header{
-            display: flex;
-            width: 80%;
-            justify-content: center;
-            align-items: center;
-            gap: 10px;
-        }
+.files-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
 
-        .delete-section-header span{
-            font-size: 18px;
-            color: #db710e;
-        }
+.file-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
-        .files-list{
-            display: flex;
-            justify-content: space-evenly;
-            align-items: center;
-        }
+    padding: 16px 0;
 
-        .files-list-item{
-            display: flex;
-            width: 60%;
-            align-items: center;
-            gap: 20px;
-        }
+    border-bottom: 1px solid #ddd;
+}
 
-        .image-section{
-            width: 80%;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
+.file-info {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
 
-        .image-section img{
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            border : 4px solid #3184e4;
-        }
+.file-thumbnail {
+    width: 80px;
+    height: 80px;
 
-        .delete-section-body{
-            width: 90%;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
+    object-fit: cover;
 
-        button {
-            border: 1px solid #3184e4;
-            background-color: #3184e4;
-            color: #fff;
-            border-radius: 5px;
-            padding: 10px 24px;
-            font-size: 18px;
-            transition: all 0.5s;
-            cursor: pointer;
-        }
+    border-radius: 6px;
+}
 
-        button:hover {
-            background-color: #fff;
-            color: #3184e4;
-            transform: scale(1.05);
-        }
+.file-icon {
+    font-size: 32px;
+}
+
+.file-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.file-actions form {
+    display: inline;
+}
+
+.file-actions button,
+.file-actions a,
+button {
+    cursor: pointer;
+}
+
+.file-preview {
+    max-width: 500px;
+    max-height: 500px;
+
+    object-fit: contain;
+}
+
+.site-footer {
+    text-align: center;
+    padding: 24px;
+
+    background: #222;
+    color: white;
+}
