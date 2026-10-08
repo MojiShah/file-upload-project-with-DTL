@@ -5,7 +5,23 @@ from .models import File
 # Create your views here.
 
 def file_list(request):
-    files = File.objects.all().order_by("-uploaded_at")
+    # files = File.objects.all().order_by("-uploaded_at")
+    files = File.objects.all()
+    
+    #search / filter
+    q = request.GET.get("q","")
+    if q:
+        files = files.filter(file__icontains=q)
+        
+    #ordering:
+    sort = request.GET.get("sort","newest")
+    if sort == "oldest":
+        files = files.order_by("uploaded_at")
+    else:
+        files = files.order_by("-uploaded_at")
+    
+    
+    
     return render(request,"files/file_upload.html",{"files": files})
 
 # def file_upload(request):
