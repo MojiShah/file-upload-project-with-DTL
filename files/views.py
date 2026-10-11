@@ -29,6 +29,14 @@ def file_list(request):
         files = files.exclude(image_query)
     else:
         file_type = "all"
+        
+    #3. ordering
+    sort = request.GET.get("sort","newest")
+    if sort == "oldest":
+        files = files.order_by("uploaded_at","id")
+    else:
+        sort = "newest"
+        files = files.order_by("-uploaded_at","-id")
     
     
     return render(request,"files/file_upload.html",{"files": files})
