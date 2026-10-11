@@ -1,11 +1,36 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from django.http import FileResponse
 from .models import File
+from django.core.paginator import Paginator
+from django.db.models import Q
+
+IMAGE_EXTENSIONS = ( ".jpg", ".jpeg", ".png", ".gif", ".webp", ".bmp", ".svg",)
 
 # Create your views here.
 
 def file_list(request):
-    files = File.objects.all().order_by("-uploaded_at")
+    files = File.objects.all()
+    
+    #1. Search
+    query = request.GET.get("q","").strip()
+    if query:
+        files = files.filter(file__icontains=query)
+    
+    #2. Filter by file type
+    file_type = request.GET.get("type","all")
+    image_query = Q()
+    
+    for extension in IMAGE_EXTENSIONS:
+        image_query |= Q(file__iendswith=extension)
+        
+    if file_type == "image":
+        files = files.filter(image_query)
+    elif file_type == "other":
+        files = files.exclude(image_query)
+    else:
+        file_type = "all"
+    
+    
     return render(request,"files/file_upload.html",{"files": files})
 
 # def file_upload(request):
