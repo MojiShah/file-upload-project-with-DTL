@@ -38,8 +38,19 @@ def file_list(request):
         sort = "newest"
         files = files.order_by("-uploaded_at","-id")
     
+    #4.pagination
+    paginator = Paginator(files,5)
+    page_number = request.GET.get("page",1)
+    page_obj = paginator.get_page(page_number)
     
-    return render(request,"files/file_upload.html",{"files": files})
+    context = {
+        "page_obj" : page_obj,
+        "query" : query,
+        "file_type" : file_type,
+        "sort" : sort
+    }
+    
+    return render(request,"files/file_upload.html",context)
 
 # def file_upload(request):
 #     if request.method == "POST":
